@@ -1,11 +1,44 @@
 @use "variables" as *;
 @use "functions";
 
+%error {
+   &::before {
+      --top: 3.5rem;
+
+      content: attr(data-error);
+      display: inline-block;
+
+      position: absolute;
+      top: var(--top);
+      left: 0;
+      opacity: 0;
+
+      text-transform: initial;
+      letter-spacing: var(--font-letterspacing-2);
+      color: var(--primary-red);
+
+      transition: top 0.2s, opacity 0.2s, border-color 0.2s;
+   }
+}
+
 label {
+   @extend %error;
+   grid-row: 1/2;
+
    font-size: var(--font-size-0);
+   position: relative;
+
+   &.hidden {
+      position: absolute;
+      white-space: nowrap;
+      top: 0;
+      left: 0;
+   }
 }
 
 input {
+   grid-row: 2/3;
+
    min-width: calc(var(--max-input-size) / 4);
    font-size: var(--font-size-2);
    color: var(--very-dark-violet);
@@ -13,13 +46,14 @@ input {
    border: 1px solid var(--light-grayish-violet);
    border-radius: var(--radius);
 
-   position: relative;
-
    &::placeholder {
       color: var(--dark-grayish-violet);
    }
-
-   &:is(:focus-visible) {
+   &:placeholder-shown ~ label::before {
+      opacity: var(--active, 0);
+      top: calc(var(--top) + var(--active, 0) * 1.25rem);
+   }
+   &:focus-within {
       outline: 1px solid var(--very-dark-violet);
    }
 

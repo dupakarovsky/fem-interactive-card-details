@@ -119,55 +119,27 @@ img {
 
    margin-block: calc(1.65 * var(--margin)) var(--margin);
 
-   // label {
-   //    font-size: var(--font-size-0);
-   // }
-
-   // input {
-   //    min-width: calc(var(--max-input-size) / 4);
-   //    font-size: var(--font-size-2);
-   //    color: var(--very-dark-violet);
-   //    padding: var(--padding);
-   //    border: 1px solid var(--light-grayish-violet);
-   //    border-radius: var(--radius);
-
-   //    &::placeholder {
-   //       color: var(--dark-grayish-violet);
-   //    }
-
-   //    &:is(:focus-visible) {
-   //       outline: 1px solid var(--very-dark-violet);
-   //    }
-
-   //    &.input-month,
-   //    &.input-year {
-   //       max-width: calc(var(--max-input-size) / 4);
-   //    }
-   // }
-
-   // button {
-   //    font-size: var(--font-size-2);
-   //    color: var(--white);
-   //    padding: 0.85em;
-   //    border: none;
-   //    border-radius: var(--radius);
-   //    background-color: var(--very-dark-violet);
-   //    cursor: pointer;
-
-   //    &:is(:hover, :focus-within) {
-   //       background-color: var(--primary-violet);
-   //       outline: inherit;
-   //    }
-
-   //    &:is(:active) {
-   //       transform: translateY(2px);
-   //    }
-   // }
+   & > *:focus-within {
+      --active: 1;
+   }
 }
 
 .cardholder-area {
    display: grid;
+   grid-template-rows: max-content max-content;
    gap: var(--label-gap);
+
+   & input {
+      // grid-row: 2/3;
+
+      // &:is(:placeholder-shown, :focus-within) ~ label::before {
+      //    opacity: 1;
+      //    top: 4.65rem;
+      // }
+   }
+   & label {
+      // grid-row: 1/2;
+   }
 }
 .cardnumber-area {
    display: grid;
@@ -180,6 +152,8 @@ img {
 .expiration {
    display: grid;
    gap: var(--label-gap);
+
+   position: relative;
 }
 .expiration-inputs {
    display: flex;
