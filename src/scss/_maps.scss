@@ -1,0 +1,23 @@
+@use "sass:map";
+
+$font-weights: (
+   "thin": var(--font-weight-1, 100),
+   "extra-light": var(--font-weight-2, 200),
+   "light": var(--font-weight-3, 300),
+   "regular": var(--font-weight-4, 400),
+   "medium": var(--font-weight-5, 500),
+   "semi-bold": var(--font-weight-6, 600),
+   "bold": var(--font-weight-7, 700),
+   "strong": var(--font-weight-8, 800),
+   "black": var(--font-weight-9, 900),
+);
+
+$screen-sizes: (
+   "xxs": 240px,
+   "xs": 360px,
+   "sm": 480px,
+   "md": 768px,
+   "lg": 1024px,
+   "xl": 1440px,
+   "xxl": 1920px,
+);

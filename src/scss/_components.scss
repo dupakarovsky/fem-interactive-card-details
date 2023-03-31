@@ -1,0 +1,49 @@
+@use "variables" as *;
+@use "functions";
+
+label {
+   font-size: var(--font-size-0);
+}
+
+input {
+   min-width: calc(var(--max-input-size) / 4);
+   font-size: var(--font-size-2);
+   color: var(--very-dark-violet);
+   padding: var(--padding);
+   border: 1px solid var(--light-grayish-violet);
+   border-radius: var(--radius);
+
+   position: relative;
+
+   &::placeholder {
+      color: var(--dark-grayish-violet);
+   }
+
+   &:is(:focus-visible) {
+      outline: 1px solid var(--very-dark-violet);
+   }
+
+   &.input-month,
+   &.input-year {
+      max-width: calc(var(--max-input-size) / 4);
+   }
+}
+
+button {
+   font-size: var(--font-size-2);
+   color: var(--white);
+   padding: 0.85em;
+   border: none;
+   border-radius: var(--radius);
+   background-color: var(--very-dark-violet);
+   cursor: pointer;
+
+   &:is(:hover, :focus-within) {
+      background-color: var(--primary-violet);
+      outline: inherit;
+   }
+
+   &:is(:active) {
+      transform: translateY(2px);
+   }
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" color-scheme="dark">
+   <head>
+      <title>Frontend Mentor | Interactive card details form</title>
+
+      <meta charset="utf-8" />
+
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="mobile-web-app-capable" content="yes" />
+      <meta name="description" content="🙂" />
+      <meta name="color-scheme" content="dark light" />
+
+      <link rel="stylesheet" href="./style.scss" />
+      <link rel="icon" type="image/png" sizes="32x32" href="./src/images/favicon-32x32.png" />
+
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet" />
+   </head>
+   <body>
+      <!-- <img class="tracer" src="./design/mobile-design.jpg" alt="" /> -->
+      <!-- <img class="tracer" src="./design/mobile-design.jpg" alt="" /> -->
+      <main class="main">
+         <div class="card-preview">
+            <div class="card-back">
+               <img class="card-image--back" src="./src/images/bg-card-back.png" alt="Credit card back image" />
+            </div>
+
+            <div class="card-front">
+               <img class="card-image--front" src="./src/images/bg-card-front.png" alt="Credit card front image" />
+               <svg class="card-logo" width="84" height="47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="23.478" cy="23.5" rx="23.478" ry="23.5" fill="#fff" />
+                  <path
+                     d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z"
+                     stroke="#fff"
+                  />
+               </svg>
+               <span class="card-number">0000 0000 0000 0000</span>
+               <span class="card-holder">Jane Appleseed</span>
+               <span class="card-exp">00/00</span>
+            </div>
+         </div>
+
+         <div class="form-preview" data-hidden="false">
+            <form class="form" action="">
+               <div class="cardholder-area">
+                  <label for="input-cardholder">cardholder name</label>
+                  <input
+                     type="text"
+                     name="input-cardholder"
+                     id="input-cardholder"
+                     placeholder="e.g. Jane Appleseed"
+                     maxlength="40"
+                  />
+               </div>
+
+               <div class="cardnumber-area">
+                  <label for="input-number">card number</label>
+                  <input
+                     type="text"
+                     name="input-number"
+                     id="input-number"
+                     placeholder="e.g. 1234 5678 9123 0000"
+                     maxlength="16"
+                  />
+               </div>
+
+               <div class="expiration-cvc-area">
+                  <div class="expiration">
+                     <label for="input-month">exp.date (mm/yy)</label>
+                     <div class="expiration-inputs">
+                        <input
+                           class="input-month"
+                           type="text"
+                           name="input-month"
+                           id="input-month"
+                           placeholder="MM"
+                           maxlength="2"
+                        />
+                        <input
+                           class="input-year"
+                           type="text"
+                           name="input-year"
+                           id="input-year"
+                           placeholder="YY"
+                           maxlength="2"
+                        />
+                     </div>
+                  </div>
+
+                  <div class="cvc">
+                     <label for="input-cvc">cvc</label>
+                     <input
+                        class="input-cvc"
+                        type="text"
+                        name="input-cvc"
+                        id="input-cvc"
+                        placeholder="e.g 123"
+                        maxlength="3"
+                     />
+                  </div>
+               </div>
+
+               <button class="btn btn--confirm" type="button">
+                  <span id="confirm">Confirm</span>
+               </button>
+            </form>
+         </div>
+
+         <div class="conf-preview" data-hidden="true">
+            <img class="conf-logo" src="./src/images/icon-complete.svg" alt="Submission complete image" />
+            <span class="conf-heading">Thank You!</span>
+            <span class="conf-message">We've added your card details</span>
+            <button class="btn btn--continue" type="button">
+               <span id="continue">Continue</span>
+            </button>
+         </div>
+      </main>
+      <script defer type="module" src="./main.js"></script>
+   </body>
+</html>

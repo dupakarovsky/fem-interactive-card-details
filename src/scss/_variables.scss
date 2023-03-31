@@ -1,0 +1,33 @@
+/////////////////////////////
+/// SASS VARIABLES
+// Place SASS variables here
+
+/////////////////////////////
+/// CSS VARIABLES
+/// Place CSS Variables here
+:root {
+   // Colors for Light Theme
+   --surface-light: hsl(278, 44%, 95%);
+   --text-light: hsl(278, 68%, 11%);
+   --brand-light: hsl(278, 94%, 30%);
+
+   // Colors for Dark Theme
+   --surface-dark: hsl(278, 24%, 11%);
+   --text-dark: hsl(278, 44%, 95%);
+   --brand-dark: hsl(278, 94%, 30%);
+
+   // Pirmaries
+   --primary-violet: hsl(278, 94%, 30%);
+   --primary-blue: hsl(249, 99%, 64%);
+   --gradient-primary-1: linear-gradient(90deg, hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+   --primary-red: hsl(0, 100%, 66%);
+
+   // Neutrals
+   --white: hsl(0, 0%, 100%);
+   --light-grayish-violet: hsl(270, 3%, 87%);
+   --dark-grayish-violet: hsl(279, 6%, 55%);
+   --very-dark-violet: hsl(278, 68%, 11%);
+
+   --font-size: 1.125rem;
+   --font-primary: "Space Grotesk";
+}
