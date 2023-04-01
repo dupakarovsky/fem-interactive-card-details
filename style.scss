@@ -16,7 +16,7 @@ body {
 
    font-family: var(--font-primary);
    font-size: var(--font-size);
-   color: var(--white);
+   // color: var(--white);
 }
 img {
    max-width: 100%;
@@ -56,6 +56,7 @@ img {
 .card-front,
 .card-back {
    width: 286px;
+   color: var(--white);
 }
 .card-front {
    position: absolute;
@@ -116,10 +117,6 @@ img {
    gap: calc(1.25 * var(--grid-gap));
 
    margin-block: calc(1.65 * var(--margin)) var(--margin);
-
-   & > *:focus-within {
-      // --active: 1;
-   }
 }
 
 .cardholder-area {
@@ -191,10 +188,10 @@ img {
    grid-template-rows: 1fr max-content max-content;
    justify-items: center;
    align-items: center;
-   gap: calc(var(--grid-gap) * 0.75);
+   gap: calc(var(--grid-gap) * 0.5);
 
    padding-inline: var(--size-5);
-   margin-block: calc(1.65 * var(--margin)) var(--margin);
+   margin-block: calc(2 * var(--margin)) var(--margin);
 
    &-logo {
       margin-block-end: var(--size-5);
@@ -203,13 +200,14 @@ img {
       text-transform: uppercase;
       letter-spacing: var(--font-letterspacing-4);
       color: var(--very-dark-violet);
-      font-size: var(--font-size-5);
+      font-size: var(--font-size-4);
    }
    &-message {
       font-size: calc(var(--font-size-1) * 1.1);
       text-transform: initial;
       letter-spacing: var(--font-letterspacing-2);
       color: var(--dark-grayish-violet);
+      margin-block-end: var(--size-6);
    }
 }
 .btn--continue {
@@ -226,3 +224,7 @@ img {
       transform: translateX(calc(-105% - 2 * var(--padding)));
    }
 }
+
+//**************************************
+//* ========= MEDIA QUERIES ========= */
+//**************************************
