@@ -3,7 +3,7 @@
 
 %error {
    &::before {
-      --top: 3.5rem;
+      --top: 1.75rem;
 
       content: attr(data-error);
       display: inline-block;
@@ -13,20 +13,25 @@
       left: 0;
       opacity: 0;
 
+      font-size: var(--font-size-0);
+      color: var(--primary-red);
       text-transform: initial;
       letter-spacing: var(--font-letterspacing-2);
-      color: var(--primary-red);
+      white-space: nowrap;
 
       transition: top 0.2s, opacity 0.2s;
    }
 }
 
-label {
+span[data-has-error="true"] {
    @extend %error;
+   position: relative;
+}
+
+label {
    grid-row: 1/2;
 
    font-size: var(--font-size-0);
-   position: relative;
 
    &.hidden {
       position: absolute;
@@ -50,9 +55,9 @@ input {
    &::placeholder {
       color: var(--dark-grayish-violet);
    }
-   &:placeholder-shown ~ label::before {
+   &:placeholder-shown + span::before {
       opacity: var(--active, 0);
-      top: calc(var(--top) + var(--active, 0) * 1.25rem);
+      top: calc(var(--top) + var(--active, 0) * 1.5rem);
    }
    &:focus-within {
       outline: 1px solid var(--very-dark-violet);

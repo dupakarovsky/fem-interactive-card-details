@@ -57,7 +57,6 @@ img {
 .card-back {
    width: 286px;
 }
-
 .card-front {
    position: absolute;
    top: 50%;
@@ -67,7 +66,6 @@ img {
       position: absolute;
    }
 }
-
 .card-back {
    position: absolute;
    top: 12.5%;
@@ -128,19 +126,27 @@ img {
    display: grid;
    grid-template-rows: max-content max-content;
    gap: var(--label-gap);
+}
+.cardholder-input-group {
+   display: grid;
 
    &:focus-within {
       --active: 1;
    }
 }
+
 .cardnumber-area {
    display: grid;
    gap: var(--label-gap);
+}
+.cardnumber-input-group {
+   display: grid;
 
    &:focus-within {
       --active: 1;
    }
 }
+
 .expiration-cvc-area {
    display: flex;
    gap: calc(4 * var(--label-gap));
@@ -155,9 +161,24 @@ img {
    display: flex;
    gap: calc(2 * var(--label-gap));
 }
+.expiration-input-group {
+   display: grid;
+
+   &:focus-within {
+      --active: 1;
+   }
+}
+
 .cvc {
    display: grid;
    gap: var(--label-gap);
+}
+.cvc-input-group {
+   display: grid;
+
+   &:focus-within {
+      --active: 1;
+   }
 }
 
 /* ========= CONF PREVIEW ========= */
@@ -194,8 +215,6 @@ img {
 .btn--continue {
    justify-self: stretch;
 }
-
-/* ========= ERROR HANDLING ========= */
 
 /* ========= HIDE PREVIEW ========= */
 [data-hidden="true"] {
