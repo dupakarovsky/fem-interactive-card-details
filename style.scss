@@ -94,7 +94,10 @@ img {
    right: 12.5%;
 }
 .card-logo {
-   scale: 0.6;
+   --width: 84px;
+   --ratio: 1.79;
+   width: clamp(54px, 6vw, 84px);
+   height: calc(var(--width) / var(--ratio));
 
    transform-origin: top left;
    top: var(--inset);
@@ -290,9 +293,9 @@ img {
 
       transform: translateX(25%);
    }
-   .card-logo {
-      scale: 1;
-   }
+   // .card-logo {
+   //    scale: 1;
+   // }
 
    .form-preview {
       grid-column: 3 / 4;
