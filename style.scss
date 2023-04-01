@@ -9,6 +9,14 @@
 // @include os-light;
 // @include media-reduce-motion;
 
+.tracer {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   opacity: 0.2;
+}
+
 body {
    display: grid;
    justify-items: center;
@@ -46,6 +54,7 @@ img {
 
    min-height: 100%;
    background-image: url("./src/images/bg-main-mobile.png");
+   background-size: cover;
    position: relative;
 }
 .card-preview > * {
@@ -55,7 +64,7 @@ img {
 
 .card-front,
 .card-back {
-   width: 286px;
+   width: clamp(17.85rem, 32vw, 27.875rem);
    color: var(--white);
 }
 .card-front {
@@ -75,25 +84,26 @@ img {
 
 .card-logo {
    scale: 0.6;
+
    transform-origin: top left;
    top: var(--inset);
    left: var(--inset);
 }
 .card-number {
    letter-spacing: var(--font-letterspacing-2);
-   font-size: var(--font-size-3);
+   font-size: clamp(var(--font-size-3), 2vw, calc(var(--font-size-5) * 0.85));
    top: 50%;
    left: var(--inset);
 }
 .card-holder {
    text-transform: uppercase;
-   font-size: calc(var(--font-size-0) * 0.85);
+   font-size: clamp(calc(var(--font-size-0) * 0.85), 1.2vw, var(--font-size-2));
    letter-spacing: var(--font-letterspacing-4);
    bottom: var(--inset);
    left: var(--inset);
 }
 .card-exp {
-   font-size: calc(var(--font-size-0) * 0.85);
+   font-size: clamp(calc(var(--font-size-0) * 0.85), 1.2vw, var(--font-size-2));
    letter-spacing: var(--font-letterspacing-4);
    bottom: var(--inset);
    right: var(--inset);
@@ -185,7 +195,7 @@ img {
    z-index: 1;
 
    display: grid;
-   grid-template-rows: 1fr max-content max-content;
+   grid-template-rows: repeat(4, max-content);
    justify-items: center;
    align-items: center;
    gap: calc(var(--grid-gap) * 0.5);
@@ -228,3 +238,58 @@ img {
 //**************************************
 //* ========= MEDIA QUERIES ========= */
 //**************************************
+
+@include media-responsive-above(960px) {
+   body {
+      align-items: center;
+   }
+   .main {
+      grid-template-rows: minmax(56.25rem, max-content);
+      grid-template-columns: repeat(2, minmax(max-content, 90rem));
+      grid-template-areas: "images data";
+      align-items: center;
+      max-width: 90rem;
+   }
+
+   .card-preview {
+      display: grid;
+      justify-content: center;
+      gap: var(--size-7);
+
+      background-image: url("./src/images/bg-main-desktop.png");
+      background-size: cover;
+
+      & > * {
+         position: relative;
+         inset: revert;
+      }
+   }
+
+   .card-back {
+      grid-row: 2 / 3;
+   }
+
+   .card-front {
+      grid-row: 1 / 2;
+      align-self: end;
+   }
+
+   .card-logo {
+      scale: 1;
+   }
+
+   .form-preview {
+      justify-self: center;
+
+      display: grid;
+      place-items: center;
+
+      max-width: var(--size-15);
+   }
+   .conf-preview {
+      justify-self: center;
+
+      place-items: center;
+      min-width: var(--size-15);
+   }
+}
