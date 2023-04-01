@@ -120,7 +120,7 @@ img {
    margin-block: calc(1.65 * var(--margin)) var(--margin);
 
    & > *:focus-within {
-      --active: 1;
+      // --active: 1;
    }
 }
 
@@ -129,21 +129,17 @@ img {
    grid-template-rows: max-content max-content;
    gap: var(--label-gap);
 
-   & input {
-      // grid-row: 2/3;
-
-      // &:is(:placeholder-shown, :focus-within) ~ label::before {
-      //    opacity: 1;
-      //    top: 4.65rem;
-      // }
-   }
-   & label {
-      // grid-row: 1/2;
+   &:focus-within {
+      --active: 1;
    }
 }
 .cardnumber-area {
    display: grid;
    gap: var(--label-gap);
+
+   &:focus-within {
+      --active: 1;
+   }
 }
 .expiration-cvc-area {
    display: flex;

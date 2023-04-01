@@ -17,7 +17,7 @@
       letter-spacing: var(--font-letterspacing-2);
       color: var(--primary-red);
 
-      transition: top 0.2s, opacity 0.2s, border-color 0.2s;
+      transition: top 0.2s, opacity 0.2s;
    }
 }
 
@@ -45,6 +45,7 @@ input {
    padding: var(--padding);
    border: 1px solid var(--light-grayish-violet);
    border-radius: var(--radius);
+   transition: outline-color 0.2s;
 
    &::placeholder {
       color: var(--dark-grayish-violet);
@@ -55,6 +56,14 @@ input {
    }
    &:focus-within {
       outline: 1px solid var(--very-dark-violet);
+   }
+   &:placeholder-shown {
+      outline: calc(var(--active, 0) * 1px) solid
+         hsl(
+            calc(278 - (var(--active, 0) * 278)),
+            calc((100 - var(--active, 32)) * 1%),
+            calc(var(--active, 0) * 55% + 11%)
+         );
    }
 
    &.input-month,
