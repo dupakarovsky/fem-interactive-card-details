@@ -32,6 +32,7 @@ label {
    grid-row: 1/2;
 
    font-size: var(--font-size-0);
+   white-space: nowrap;
 
    &.hidden {
       position: absolute;

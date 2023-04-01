@@ -33,11 +33,12 @@ img {
 /* ========= MAIN ========= */
 .main {
    --radius: 0.65rem;
-   --padding: 0.7em;
+   --margin: 0.7em;
    --margin: 2.75rem;
    --grid-gap: var(--size-5);
    --label-gap: var(--size-1);
-   --max-input-size: var(--size-14);
+   --max-input-size: var(--size-13);
+   --padding: calc(var(--size-3) * 0.75);
    display: grid;
    grid-template-rows: minmax(15rem, 1fr) minmax(29rem, max-content);
    grid-template-areas:
@@ -80,8 +81,18 @@ img {
    position: absolute;
    top: 12.5%;
    right: 5%;
+
+   & > *:not(img) {
+      position: absolute;
+   }
 }
 
+.card-cvc {
+   font-size: clamp(calc(var(--font-size-0) * 0.85), 1.2vw, var(--font-size-2));
+   letter-spacing: var(--font-letterspacing-4);
+   top: 44%;
+   right: 12.5%;
+}
 .card-logo {
    scale: 0.6;
 
@@ -243,17 +254,19 @@ img {
    body {
       align-items: center;
    }
+
    .main {
-      grid-template-rows: minmax(56.25rem, max-content);
-      grid-template-columns: repeat(2, minmax(max-content, 90rem));
+      grid-template-rows: minmax(100vh, max-content);
+      grid-template-columns: minmax(max-content, 30rem) 15rem minmax(max-content, 45rem);
       grid-template-areas: "images data";
       align-items: center;
+
       max-width: 90rem;
+      padding-inline-end: var(--size-10);
    }
 
    .card-preview {
       display: grid;
-      justify-content: center;
       gap: var(--size-7);
 
       background-image: url("./src/images/bg-main-desktop.png");
@@ -267,18 +280,22 @@ img {
 
    .card-back {
       grid-row: 2 / 3;
-   }
+      align-self: start;
 
+      transform: translateX(50%);
+   }
    .card-front {
       grid-row: 1 / 2;
       align-self: end;
-   }
 
+      transform: translateX(25%);
+   }
    .card-logo {
       scale: 1;
    }
 
    .form-preview {
+      grid-column: 3 / 4;
       justify-self: center;
 
       display: grid;
@@ -287,9 +304,12 @@ img {
       max-width: var(--size-15);
    }
    .conf-preview {
+      grid-column: 3 / 4;
       justify-self: center;
 
       place-items: center;
-      min-width: var(--size-15);
+
+      width: clamp(var(--size-14), 35vw, var(--size-15));
+      text-align: center;
    }
 }
