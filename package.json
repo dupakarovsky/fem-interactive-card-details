@@ -1,21 +1,24 @@
 {
-  "name": "test",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.13",
-    "postcss-jit-props": "^1.0.7",
-    "postcss-preset-env": "^7.8.3",
-    "vite": "^3.2.3"
-  },
-  "dependencies": {
-    "open-props": "^1.5.0",
-    "sass": "^1.56.1"
-  }
+   "name": "test",
+   "private": true,
+   "version": "0.0.0",
+   "type": "module",
+   "main": "main.js",
+   "scripts": {
+      "dev": "vite",
+      "build": "vite build",
+      "preview": "vite preview"
+   },
+   "devDependencies": {
+      "autoprefixer": "^10.4.13",
+      "postcss-jit-props": "^1.0.7",
+      "postcss-preset-env": "^7.8.3",
+      "vite": "^3.2.3"
+   },
+   "dependencies": {
+      "gsap": "^3.11.5",
+      "open-props": "^1.5.0",
+      "sass": "^1.56.1",
+      "splitting": "^1.0.6"
+   }
 }

@@ -152,7 +152,7 @@ img {
    display: grid;
 
    &:focus-within {
-      --active: 1;
+      // --active: 1;
    }
 }
 
@@ -164,8 +164,12 @@ img {
    display: grid;
 
    &:focus-within {
-      --active: 1;
+      // --active: 1;
    }
+}
+.card-number,
+.card-exp {
+   overflow-y: hidden;
 }
 
 .expiration-cvc-area {
@@ -186,7 +190,7 @@ img {
    display: grid;
 
    &:focus-within {
-      --active: 1;
+      // --active: 1;
    }
 }
 
@@ -198,7 +202,7 @@ img {
    display: grid;
 
    &:focus-within {
-      --active: 1;
+      // --active: 1;
    }
 }
 

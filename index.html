@@ -52,8 +52,9 @@
                         placeholder="e.g. Jane Appleseed"
                         maxlength="40"
                         required
+                        data-in-error="false"
                      />
-                     <span data-has-error="true" data-error="Can't be blank"></span>
+                     <span class="error" data-error="Can't be blank"></span>
                   </div>
                   <label for="input-cardholder">cardholder name</label>
                </div>
@@ -65,12 +66,13 @@
                         name="input-number"
                         id="input-number"
                         placeholder="e.g. 1234 5678 9123 0000"
-                        maxlength="16"
-                        pattern="[0-9]{16}"
+                        maxlength="19"
+                        pattern="[0-9]{19}"
                         title="Use 16 digit number without spaces of dashes"
+                        data-in-error="false"
                         required
                      />
-                     <span data-has-error="true" data-error="Wrong Input, numbers only!"></span>
+                     <span class="error" data-error="Wrong Input, numbers only!"></span>
                   </div>
                   <label for="input-number">card number</label>
                </div>
@@ -89,8 +91,9 @@
                               title="02 digit number"
                               pattern="[0-9]{2}"
                               required
+                              data-in-error="false"
                            />
-                           <span data-has-error="true" data-error="Can't be blank"></span>
+                           <span class="error" data-error="Can't be blank"></span>
                         </div>
                         <div class="expiration-input-group">
                            <input
@@ -102,9 +105,10 @@
                               maxlength="2"
                               title="02 digit number"
                               pattern="[0-9]{2}"
+                              data-in-error="false"
                               required
                            />
-                           <span data-has-error="true" data-error="Can't be blank"></span>
+                           <span class="error" data-error="Can't be blank"></span>
                         </div>
                      </div>
                      <label for="input-month">exp.date (mm/yy)</label>
@@ -121,11 +125,12 @@
                            maxlength="3"
                            title="03 digit number"
                            pattern="[0-9]{3}"
+                           data-in-error="false"
                            required
                         />
-                        <span data-has-error="true" data-error="Can't be blank"></span>
+                        <span class="error" data-error="Can't be blank"></span>
                      </div>
-                     <label for="input-cvc" data-error="Can't be blank">cvc</label>
+                     <label for="input-cvc">cvc</label>
                   </div>
                </div>
 

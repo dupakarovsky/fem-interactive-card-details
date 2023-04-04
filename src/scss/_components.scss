@@ -23,7 +23,7 @@
    }
 }
 
-span[data-has-error="true"] {
+span.error {
    @extend %error;
    position: relative;
 }
@@ -53,23 +53,23 @@ input {
    border-radius: var(--radius);
    transition: outline-color 0.2s;
 
-   &::placeholder {
-      color: var(--dark-grayish-violet);
-   }
-   &:placeholder-shown + span::before {
-      opacity: var(--active, 0);
-      top: calc(var(--top) + var(--active, 0) * 1.5rem);
-   }
    &:focus-within {
       outline: 1px solid var(--very-dark-violet);
    }
+
+   &::placeholder {
+      color: var(--dark-grayish-violet);
+   }
    &:placeholder-shown {
-      outline: calc(var(--active, 0) * 1px) solid
-         hsl(
-            calc(278 - (var(--active, 0) * 278)),
-            calc((100 - var(--active, 32)) * 1%),
-            calc(var(--active, 0) * 55% + 11%)
-         );
+      outline-color: hsl(
+         calc(278 - (var(--active, 0) * 278)),
+         calc((100 - var(--active, 32)) * 1%),
+         calc(var(--active, 0) * 55% + 11%)
+      );
+   }
+   &[data-in-error="true"] + span::before {
+      opacity: var(--active, 0);
+      top: calc(var(--top) + var(--active, 0) * 1.5rem);
    }
 
    &.input-month,
