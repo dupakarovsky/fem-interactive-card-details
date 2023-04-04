@@ -1,4 +1,5 @@
 import { select, selectAll } from "./src/js/utils.js";
+import { state, setDefaultStateValues, updateStateProperty } from "./src/js/model.js";
 import { gsap } from "gsap";
 import { TextPlugin } from "gsap/all";
 import Splitting from "splitting";
@@ -7,29 +8,35 @@ gsap.registerPlugin(TextPlugin);
 
 const inputCardHolder = select("input-cardholder");
 const inputCardNumber = select("input-number");
-const cardNumber = select("card-number");
-const cardExp = select("card-exp");
+let counter = 0;
 
-let numPos = 0;
-let prevInputLength = 0;
-let direction = 0;
-
-const updateCardHolder = (value) => {
-   const cardHolder = select("card-holder");
-   return gsap.to(cardHolder, {
-      text: {
-         value: value,
-      },
-      duration: 0.25,
-      ease: "power1.out",
+const animateCardHolder = (evt) => {
+   return gsap.to(select("card-holder"), {
+      text: evt.target.value,
+      duration: 0.2,
+      ease: "sine1.inOut",
+      onComplete: () => updateStateProperty("name", evt.target.value0),
    });
 };
 
-const updateCardNumber = (string) => {
-   let cardnums = select("card-number").textContent.split(" ");
-   let inputs = "";
+const updateInputValue = (domEl, value) => {
+   domEl.value = value;
+};
 
-   console.log(inputs, cardnums);
+const animateCardNumber = (evt) => {
+   let cardnums = state.cardnumber;
+   let input = evt.target;
+
+   if (input.value.indexOf(input.value.at(-1)) > 0 && input.value.indexOf(input.value.at(-1)) % 3 === 0) {
+      state.lastInput === 32 || input.value.length === 19
+         ? updateInputValue(input, input.value)
+         : updateInputValue(input, input.value + " ");
+   } else {
+      console.log(input.value.at(-1), input.value.indexOf(input.value.at(-1)));
+      updateInputValue(input, input.value);
+   }
+   updateStateProperty("lastInput", +input?.value?.at(-1)?.charCodeAt());
+
    // return gsap.to(cardNumber, {
    //    text: {
    //       value: string,
@@ -65,34 +72,13 @@ function checkForErrorInvalidFormat(e) {
 }
 
 inputCardHolder.addEventListener("input", (e) => {
-   updateCardHolder(e.target.value);
+   animateCardHolder(e);
 });
 inputCardNumber.addEventListener("input", (e) => {
-   let input;
-   if (!inputCardNumber.value && direction < 0) resetVars();
-
-   direction = prevInputLength < e.target.value.length ? 1 : -1;
-   numPos = numPos + direction;
-
-   console.log("direction:", direction, "numPos:", numPos, "target:", e.target.value);
-   if (numPos && numPos % 4 === 0 && e.target.value.length < 16) {
-      if (direction === 1) {
-         inputCardNumber.value = e.target.value + " ";
-         numPos = 0;
-      } else {
-         inputCardNumber.value = e.target.value.trim();
-         numPos--;
-      }
-   }
-   input = inputCardNumber.value;
-   prevInputLength = input.length;
+   animateCardNumber(e);
 });
 
-function resetVars() {
-   numPos = 0;
-   prevInputLength = 0;
-   direction = 1;
-}
+window.addEventListener("load", setDefaultStateValues);
 
 //* FLIP POSITIONS
 // const cardBack = select("card-back");
