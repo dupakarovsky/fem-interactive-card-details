@@ -5,10 +5,8 @@ export const state = {
    cardnumber: [],
    direction: 1,
    lastInputCharCode: "",
-   expriation: {
-      month: "",
-      year: "",
-   },
+   month: "",
+   year: "",
    cvc: "",
 };
 
@@ -20,8 +18,8 @@ export function setDefaultStateValues() {
 
    state.name = cardHolder.textContent;
    state.cardnumber = cardnumber.textContent.split(" ");
-   state.expriation.month = cardExp.textContent.split("/")[0];
-   state.expriation.year = cardExp.textContent.split("/")[1];
+   state.month = cardExp.textContent.split("/")[0];
+   state.year = cardExp.textContent.split("/")[1];
    state.cvc = cardCvc.textContent;
    state.lastInputCharCode = null;
 
@@ -29,5 +27,6 @@ export function setDefaultStateValues() {
 }
 
 export function updateStateProperty(prop, val) {
+   if (Array.isArray(state[prop])) return state[prop].push(val);
    return (state[prop] = val);
 }

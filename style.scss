@@ -87,7 +87,8 @@ img {
    }
 }
 
-.card-cvc {
+.card-cvc,
+.cvc {
    font-size: clamp(calc(var(--font-size-0) * 0.85), 1.2vw, var(--font-size-2));
    letter-spacing: var(--font-letterspacing-4);
    top: 44%;
@@ -117,6 +118,8 @@ img {
    left: var(--inset);
 }
 .card-exp {
+   display: flex;
+
    font-size: clamp(calc(var(--font-size-0) * 0.85), 1.2vw, var(--font-size-2));
    letter-spacing: var(--font-letterspacing-4);
    bottom: var(--inset);
