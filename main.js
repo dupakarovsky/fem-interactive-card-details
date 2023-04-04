@@ -27,26 +27,25 @@ const animateCardNumber = (evt) => {
    let cardnums = state.cardnumber;
    let input = evt.target;
 
-   if (input.value.indexOf(input.value.at(-1)) > 0 && input.value.indexOf(input.value.at(-1)) % 3 === 0) {
-      state.lastInput === 32 || input.value.length === 19
+   console.log(state.lastInputCharCode);
+   if (input.value.length === 4 || input.value.length === 9 || input.value.length === 14) {
+      state.lastInputCharCode === 32
          ? updateInputValue(input, input.value)
          : updateInputValue(input, input.value + " ");
    } else {
-      console.log(input.value.at(-1), input.value.indexOf(input.value.at(-1)));
       updateInputValue(input, input.value);
    }
-   updateStateProperty("lastInput", +input?.value?.at(-1)?.charCodeAt());
+   updateStateProperty("lastInputCharCode", +input?.value?.charCodeAt(input.value.length - 1));
 
-   // return gsap.to(cardNumber, {
-   //    text: {
-   //       value: string,
-   //       preserveSpaces: true,
-   //       type: "diff",
-   //       delimiter: " ",
-   //    },
-   //    duration: 0.25,
-   //    ease: "power1.out",
-   // });
+   return gsap.to(select("card-number"), {
+      text: {
+         value: input.value + cardnums.join(" ").slice(input.value.length),
+         preserveSpaces: true,
+         type: "diff",
+      },
+      duration: 0.25,
+      ease: "power1.out",
+   });
 };
 
 const setErrorState = (val, context) => {
