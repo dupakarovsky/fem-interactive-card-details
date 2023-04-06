@@ -1,7 +1,7 @@
 import { gsap } from "gsap";
 import { TextPlugin } from "gsap/all";
-import { updateStateProperty } from "./model.js";
-import { updateInputValue } from "./utils.js";
+import { state, updateStateProperty } from "./model.js";
+import { select, updateInputValue } from "./utils.js";
 
 gsap.registerPlugin(TextPlugin);
 export const cardFlipMobile = gsap.timeline();

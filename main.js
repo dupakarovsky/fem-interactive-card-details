@@ -19,6 +19,7 @@ const minSizeForDesktop = "960px";
 const maxSizeForMobile = "959px";
 const mediaChangeToDesktop = window.matchMedia(`(min-width: ${minSizeForDesktop})`);
 const mediaChangeToMobile = window.matchMedia(`(max-width: ${maxSizeForMobile})`);
+const form = select("form");
 const inputCardHolder = select("input-cardholder");
 const inputCardNumber = select("input-number");
 const inputCardMonth = select("input-month");
@@ -26,28 +27,37 @@ const inputCardYear = select("input-year");
 const inputCardCvc = select("input-cvc");
 const cardPreview = select("card-preview");
 
-inputCardHolder.addEventListener("input", function (e) {
-   animateCardHolder(e);
-   checkForErrorBlank(e, this);
-});
-inputCardNumber.addEventListener("input", function (e) {
-   checkForErrorBlank(e, this);
-   checkForErrorInvalidNumberFormat(e, this);
-   animateCardNumber(e);
-});
-inputCardMonth.addEventListener("input", function (e) {
-   checkForErrorBlank(e, this);
-   checkErrorInvalidMonth(e, this);
-   animateCardField(e, "month");
-});
-inputCardYear.addEventListener("input", function (e) {
-   checkForErrorBlank(e, this);
-   checkErrorInvalidYear(e, this);
-   animateCardField(e, "year");
-});
-inputCardCvc.addEventListener("input", function (e) {
-   checkForErrorBlank(e, this);
-   animateCardField(e, "cvc");
+form.addEventListener("input", function (e) {
+   const input = e.target.closest("input");
+   if (!input) return;
+
+   switch (true) {
+      case e.target === inputCardHolder:
+         animateCardHolder(e);
+         checkForErrorBlank(e, e.target);
+         break;
+      case e.target === inputCardNumber:
+         checkForErrorBlank(e, e.target);
+         checkForErrorInvalidNumberFormat(e, e.target);
+         animateCardNumber(e);
+         break;
+      case e.target === inputCardMonth:
+         checkForErrorBlank(e, e.target);
+         checkErrorInvalidMonth(e, e.target);
+         animateCardField(e, "month");
+         break;
+      case e.target === inputCardYear:
+         checkForErrorBlank(e, e.target);
+         checkErrorInvalidYear(e, e.target);
+         animateCardField(e, "year");
+         break;
+      case e.target === inputCardCvc:
+         checkForErrorBlank(e, e.target);
+         animateCardField(e, "cvc");
+         break;
+      default:
+         "";
+   }
 });
 
 inputCardCvc.addEventListener("focusin", (e) => {
@@ -57,19 +67,13 @@ inputCardCvc.addEventListener("focusout", (e) => {
    if (mediaChangeToMobile.matches) cardFlipMobile.reverse();
 });
 
-document.addEventListener("load", () => {
-   setDefaultStateValues();
-   animateCardFlipMobile();
-});
-
 mediaChangeToDesktop.addEventListener("change", (e) => {
    if (e.target.matches) {
-      console.log("now in desktop");
       removeInlineStyles(cardPreview);
    }
 });
-mediaChangeToMobile.addEventListener("change", (e) => {
-   if (e.target.matches) {
-      console.log("now in mobile");
-   }
+
+document.addEventListener("DOMContentLoaded", () => {
+   setDefaultStateValues();
+   animateCardFlipMobile();
 });

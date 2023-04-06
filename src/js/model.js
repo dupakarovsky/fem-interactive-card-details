@@ -1,6 +1,6 @@
 import { select } from "./utils.js";
 
-const state = {
+export const state = {
    name: "",
    cardnumber: [],
    direction: 1,
