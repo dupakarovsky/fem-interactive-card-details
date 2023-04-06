@@ -1,6 +1,6 @@
-import { select, selectAll } from "./utils.js";
+import { select } from "./utils.js";
 
-export const state = {
+const state = {
    name: "",
    cardnumber: [],
    direction: 1,
