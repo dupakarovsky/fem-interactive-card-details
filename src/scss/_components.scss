@@ -48,6 +48,7 @@ input {
    min-width: calc(var(--max-input-size) / 4);
    font-size: var(--font-size-2);
    color: var(--very-dark-violet);
+   background-color: var(--white);
    padding: var(--padding);
    border: 1px solid var(--light-grayish-violet);
    border-radius: var(--radius);
@@ -86,6 +87,7 @@ button {
    border: none;
    border-radius: var(--radius);
    background-color: var(--very-dark-violet);
+   transition: background-color 0.2s;
    cursor: pointer;
 
    &:is(:hover, :focus-within) {
@@ -95,5 +97,8 @@ button {
 
    &:is(:active) {
       transform: translateY(2px);
+   }
+   &:disabled {
+      background-color: var(--dark-grayish-violet);
    }
 }

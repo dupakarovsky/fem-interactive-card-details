@@ -3,11 +3,6 @@
 // @import "open-props/buttons";
 
 @include my-reset(100%);
-@include media-pref-os-light;
-@include media-pref-os-dark;
-// @include os-dark;
-// @include os-light;
-// @include media-reduce-motion;
 
 .tracer {
    position: absolute;
@@ -22,9 +17,9 @@ body {
    justify-items: center;
    align-items: start;
 
+   background-color: var(--light-grayish-violet);
    font-family: var(--font-primary);
    font-size: var(--font-size);
-   // color: var(--white);
 }
 img {
    max-width: 100%;
@@ -137,6 +132,7 @@ img {
    text-transform: uppercase;
    letter-spacing: var(--font-letterspacing-4);
    padding-inline: var(--size-5);
+   overflow: hidden;
 }
 
 .form {
@@ -210,8 +206,7 @@ img {
 }
 
 /* ========= CONF PREVIEW ========= */
-.conf-preview,
-.conf {
+.conf-preview {
    grid-area: data;
    z-index: 1;
 
@@ -250,10 +245,11 @@ img {
    visibility: hidden;
    display: none;
    overflow-x: hidden;
-
-   & .form {
-      transform: translateX(calc(-105% - 2 * var(--padding)));
-   }
+   z-index: 0;
+   transform: translateX(calc(-105% - 2 * var(--padding)));
+}
+[data-hidden="false"] {
+   z-index: 2;
 }
 
 //**************************************

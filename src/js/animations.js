@@ -1,7 +1,7 @@
 import { gsap } from "gsap";
 import { TextPlugin } from "gsap/all";
 import { state, updateStateProperty } from "./model.js";
-import { select, updateInputValue } from "./utils.js";
+import { select, selectAll, updateInputValue } from "./utils.js";
 
 gsap.registerPlugin(TextPlugin);
 export const cardFlipMobile = gsap.timeline();
@@ -75,4 +75,41 @@ export const animateCardFlipMobile = () => {
          "0"
       )
       .pause();
+};
+
+export const animatedFormOut = () => {
+   const formElements = selectAll("form > *");
+   const formPreview = select("form-preview");
+   const confPreview = select("conf-preview");
+
+   gsap.to(formElements, {
+      onStart: () => {
+         select("btn--confirm").disabled = true;
+      },
+      opacity: 0,
+      xPercent: 100,
+      duration: 0.5,
+      ease: "back.in(1)",
+      stagger: { each: 0.15 },
+      onComplete: () => {
+         formPreview.dataset.hidden = "true";
+         confPreview.dataset.hidden = "false";
+         formElements.forEach((el) => el.removeAttribute("style"));
+      },
+   });
+};
+
+export const animateConfIn = () => {
+   const confElements = Array.from(selectAll(".conf-preview > *"));
+   gsap.from(confElements, {
+      opacity: 0,
+      yPercent: 100,
+      stagger: { each: 0.15 },
+      duration: 0.5,
+      delay: 1,
+      ease: "back.out(1)",
+      onComplete: () => {
+         confElements.forEach((el) => el.removeAttribute("style"));
+      },
+   });
 };

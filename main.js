@@ -13,6 +13,8 @@ import {
    animateCardNumber,
    animateCardField,
    animateCardFlipMobile,
+   animatedFormOut,
+   animateConfIn,
 } from "./src/js/animations.js";
 
 const minSizeForDesktop = "960px";
@@ -20,6 +22,7 @@ const maxSizeForMobile = "959px";
 const mediaChangeToDesktop = window.matchMedia(`(min-width: ${minSizeForDesktop})`);
 const mediaChangeToMobile = window.matchMedia(`(max-width: ${maxSizeForMobile})`);
 const form = select("form");
+
 const inputCardHolder = select("input-cardholder");
 const inputCardNumber = select("input-number");
 const inputCardMonth = select("input-month");
@@ -59,6 +62,11 @@ form.addEventListener("input", function (e) {
          "";
    }
 });
+form.addEventListener("submit", function (e) {
+   e.preventDefault();
+   animatedFormOut();
+   animateConfIn();
+});
 
 inputCardCvc.addEventListener("focusin", (e) => {
    if (mediaChangeToMobile.matches) cardFlipMobile.play();
@@ -73,7 +81,7 @@ mediaChangeToDesktop.addEventListener("change", (e) => {
    }
 });
 
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
    setDefaultStateValues();
    animateCardFlipMobile();
 });
