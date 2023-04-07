@@ -64,6 +64,7 @@ form.addEventListener("input", function (e) {
 });
 form.addEventListener("submit", function (e) {
    e.preventDefault();
+   if (inputCardMonth.dataset.inError === "true") return;
    animatedFormOut();
    animateConfIn();
 });

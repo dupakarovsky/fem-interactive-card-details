@@ -21,7 +21,10 @@ export function checkForErrorInvalidNumberFormat(e, context) {
 }
 export function checkErrorInvalidMonth(e, context) {
    const input = context.value;
-   if ((input.length === 2 && input > 12) || !isFinite(input)) return setErrorState("true", context, "Invalid value");
+   if ((input.length === 2 && input > 12) || !isFinite(input)) {
+      setErrorState("true", context, "Invalid value");
+   }
+   return true;
 }
 export function checkErrorInvalidYear(e, context) {
    const input = context.value;
